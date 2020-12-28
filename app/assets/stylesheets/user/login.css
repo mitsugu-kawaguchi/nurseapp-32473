@@ -1,0 +1,13 @@
+.container {
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+.field {
+  font-size: 22px
+}
+
+.actions{
+  font-size: 22px
+}
