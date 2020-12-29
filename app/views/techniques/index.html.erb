@@ -1,7 +1,68 @@
 <%= render "shared/header" %>
 <div class='main'>
-  <h1>新人教育チェックリスト</h1>
-  <div class='rookies'>新人</div>
-  <div class='techniques'>技術</div>
-  <div class='plans'>予定</div>
+  <h1 class='title-main'>新人教育チェックリスト</h1>
+  <div class=category>
+
+    <div class='rookies'>
+      <h2 class='title-1'>新人看護師</h2>
+      <ul class='rookie-lists'>
+        <% if @users.present? %>
+          <% @users.each do |user| %>
+            <li class='list'>
+              <%= link_to '' do %>
+                <div class='rookie-info'>
+                  <h3 class='rookie-name'>
+                    <%= user.name %>
+                  </h3>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='techniques'>
+      <h2 class='title-2'>技術項目</h2>
+      <ul class='technique-lists'>
+        <% if @techniques.present? %>
+          <% @techniques.each do |technique| %>
+            <li class='list'>
+              <%= link_to '' do %>
+                <div class='technique-info'>
+                  <h3 class='technique-name'>
+                    <%= technique.title %>
+                  </h3>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class='plans'>
+      <h2 class='title-3'>本日の予定一覧</h2>
+      <ul class='plan-lists'>
+        <% if @plans.present? %>
+          <% @plans.each do |plan| %>
+            <li class='list'>
+              <%= link_to '' do %>
+                <div class='plan-info'>
+                  <h3 class='plan-name'>
+                    <%= plan.name %>
+                  </h3>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <%# if user_signed_in? && @users(nursing_history >= 4) %>
+      <%= link_to new_technique_path do %>
+        <span class='technique-btn-text'>技術追加する</span>
+      <% end %>
+    <%# end %>
+  </div>
 </div>

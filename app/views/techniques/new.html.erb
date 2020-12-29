@@ -1,0 +1,47 @@
+<div class="techniques-contents">
+
+  <div class="techniques-sellect-main">
+      <h2 class="techniques-sellect-title">技術の情報を入力</h2>
+    <%= form_with model: @technique,local: true do |f| %>
+
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <%# 技術名と技術説明 %>
+      <div class="new-techniques">
+        <div class="weight-bold-text">
+          技術名
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :title, class:"techniques-text", id:"technique-name", placeholder:"技術名（必須 40文字まで)", maxlength:"40" %>
+        <div class="techniques-explain">
+          <div class="weight-bold-text">
+            技術の説明
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :description, class:"techniques-text", id:"technique-info", placeholder:"技術の説明" ,rows:"7" ,maxlength:"1000" %>
+        </div>
+      </div>
+
+      <%# 技術の詳細 %>
+      <div class="techniques-detail">
+        <div class="weight-bold-text">技術の詳細</div>
+        <div class="form">
+          <div class="weight-bold-text">
+            優先度
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.collection_select(:priority_id, Priority.all, :id, :name, {}, {class:"select-box", id:"technique-priority"}) %>
+          <label class="control-label" for="">技術習得予定日</label>
+            <%= f.datetime_select :target_at, {}, class: 'form-control' %>
+          <label class="control-label" for="">技術習得締め日</label>
+            <%= f.datetime_select :completed_at, {}, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="sell-btn-contents">
+        <%= f.submit "追加する" ,class:"technique-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
