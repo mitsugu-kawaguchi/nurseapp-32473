@@ -1,0 +1,22 @@
+<%= render "shared/header" %>
+
+<div class='technique-show'>
+  <div class='technique-box'>
+    <h2 class='technique-name'>
+      <%= @technique.title %>
+    </h2>
+    <div class='technique-image-content'>
+      <%= link_to @technique.video_url.to_s do %>
+        <%= image_tag(@technique.video_url(:screenshot).to_s, id: "video", :alt => "screenshot") %>
+      <% end %>
+    </div>
+    <div class="technique-explain-box">
+      <span><%= @technique.description %></span>
+    </div>
+
+    <%# if user_signed_in? && current_user.id == @item.user_id %>
+      <%#= link_to '編集', edit_technique_path(@technique.id), method: :get, class: "technique-red-btn" %>
+      <%#= link_to '削除', technique_path(@technique.id), method: :delete, class:'technique-destroy' %>
+    <%# end %>
+  </div>
+</div>

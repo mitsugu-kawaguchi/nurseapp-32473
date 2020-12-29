@@ -1,5 +1,6 @@
 class Technique < ApplicationRecord
   belongs_to :user
+  mount_uploader :video, VideoUploader
 
   with_options presence: true do
     validates :title

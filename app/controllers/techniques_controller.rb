@@ -17,9 +17,13 @@ class TechniquesController < ApplicationController
     end
   end
 
+  def show
+    @technique = Technique.find(params[:id])
+  end
+
   private
 
   def techniques_params
-    params.require(:technique).permit(:title, :priority_id, :description, :target_at, :completed_at).merge(user_id: current_user.id)
+    params.require(:technique).permit(:title, :priority_id, :description, :target_at, :completed_at, :video).merge(user_id: current_user.id)
   end
 end

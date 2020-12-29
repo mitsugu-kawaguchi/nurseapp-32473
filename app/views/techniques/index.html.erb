@@ -28,7 +28,7 @@
         <% if @techniques.present? %>
           <% @techniques.each do |technique| %>
             <li class='list'>
-              <%= link_to '' do %>
+              <%= link_to technique_path(technique.id) do %>
                 <div class='technique-info'>
                   <h3 class='technique-name'>
                     <%= technique.title %>

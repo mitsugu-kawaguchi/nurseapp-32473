@@ -20,6 +20,10 @@
           </div>
           <%= f.text_area :description, class:"techniques-text", id:"technique-info", placeholder:"技術の説明" ,rows:"7" ,maxlength:"1000" %>
         </div>
+        <div class="field">
+          <%= f.label :video %><br>
+          <%= f.file_field :video, :accept => 'video/*' %>
+        </div>
       </div>
 
       <%# 技術の詳細 %>
@@ -32,9 +36,9 @@
           </div>
           <%= f.collection_select(:priority_id, Priority.all, :id, :name, {}, {class:"select-box", id:"technique-priority"}) %>
           <label class="control-label" for="">技術習得予定日</label>
-            <%= f.datetime_select :target_at, {}, class: 'form-control' %>
+            <%= f.date_select :target_at, {}, class: 'form-control' %>
           <label class="control-label" for="">技術習得締め日</label>
-            <%= f.datetime_select :completed_at, {}, class: 'form-control' %>
+            <%= f.date_select :completed_at, {}, class: 'form-control' %>
         </div>
       </div>
 

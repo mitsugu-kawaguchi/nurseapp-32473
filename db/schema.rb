@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_071532) do
     t.datetime "target_at", null: false
     t.datetime "completed_at", null: false
     t.boolean "completed"
+    t.string "video"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
