@@ -43,8 +43,10 @@
       </div>
 
       <div class="sell-btn-contents">
-        <%= f.submit "追加する" ,class:"technique-btn" %>
-        <%=link_to 'もどる', root_path, class:"back-btn" %>
+        <% if user_signed_in? && current_user.nursing_history >= 4 %>
+          <%= f.submit "追加する" ,class:"technique-btn" %>
+          <%=link_to 'もどる', root_path, class:"back-btn" %>
+        <% end %>
       </div>
     <% end %>
   </div>

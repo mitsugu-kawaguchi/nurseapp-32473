@@ -1,7 +1,7 @@
 class TechniquesController < ApplicationController
   def index
-    @users = User.all.order('created_at DESC')
-    @techniques = Technique.all
+    @users = User.where("nursing_history <=4")
+    @techniques = Technique.all.order('priority_id DESC')
   end
 
   def new
@@ -30,10 +30,14 @@ class TechniquesController < ApplicationController
 
   def update
     @technique = Technique.find(params[:id])
-    if @technique.update(techniques_params)
-      redirect_to root_path
-    else
-      render :edit
+    respond_to do |format|
+      if @technique.update(techniques_params) && @technique.video.recreate_versions!
+        format.html { redirect_to @technique, notice: 'Article was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @technique.errors, status: :unprocessable_entity }
+      end
     end
   end
 
