@@ -9,6 +9,16 @@ class Technique < ApplicationRecord
     validates :target_at
     validates :completed_at
   end
+  validate :start_finish_check
+  validate :start_check
+
+  def start_finish_check
+    errors.add(:completed_at) if self.target_at > self.completed_at
+  end
+
+  def start_check
+    errors.add(:target_at) if self.target_at < Time.now
+  end
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :priority
 end
