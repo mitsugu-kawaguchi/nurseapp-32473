@@ -1,0 +1,14 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: 名前
+       nursing_history: 看護師歴
+       ward_id: 病棟名
+     technique:
+       title: タイトル名
+       priority_id: 優先度
+       description: 技術の詳細
+       target_at: 技術習得予定日
+       completed_at: 技術習得締め日
+       video: マニュアル動画

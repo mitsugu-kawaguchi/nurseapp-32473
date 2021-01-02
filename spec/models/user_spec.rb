@@ -13,45 +13,45 @@ RSpec.describe User, type: :model do
       it "nameが空だと登録できない" do
         @user.name = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name can't be blank")
+        expect(@user.errors.full_messages).to include("名前を入力してください")
       end
       it "emailが空では登録できない" do
         @user.email = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+        expect(@user.errors.full_messages).to include("Eメールを入力してください")
       end
       it '重複したemailが存在する場合登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include('Email has already been taken')
+        expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
       end
       it 'passwordが空では登録できない' do
         @user.password = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("パスワードを入力してください", "パスワード（確認用）とパスワードの入力が一致しません")
       end
       it 'passwordが5文字以下であれば登録できない' do
         @user.password = '00000'
         @user.password_confirmation = '00000'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+        expect(@user.errors.full_messages).to include('パスワードは6文字以上で入力してください')
       end
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
       it "nursing_historyが空では登録できない" do
         @user.nursing_history = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nursing history can't be blank")
+        expect(@user.errors.full_messages).to include("看護師歴を入力してください")
       end
       it "ward_idが空では登録できない" do
         @user.ward_id = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Ward can't be blank")
+        expect(@user.errors.full_messages).to include("病棟名を入力してください")
       end
     end
   end

@@ -3,8 +3,8 @@ FactoryBot.define do
     title              {"test"}
     priority_id        {1}
     description        {"ttt"}
-    target_at          {"2020/12/31"}
-    completed_at       {"2021/06/16"}
+    target_at          {"2021/02/30"}
+    completed_at       {"2021/10/30"}
 
     association :user
   end

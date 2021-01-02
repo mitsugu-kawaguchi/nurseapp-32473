@@ -14,28 +14,28 @@ RSpec.describe Technique, type: :model do
       it 'タイトルが空の時' do
         @technique.title = nil
         @technique.valid?
-        expect(@technique.errors.full_messages).to include("Title can't be blank")
+        expect(@technique.errors.full_messages).to include("タイトル名を入力してください")
       end
       it '優先度が空の時' do
         @technique.priority_id = nil
         @technique.valid?
-        expect(@technique.errors.full_messages).to include("Priority can't be blank")
+        expect(@technique.errors.full_messages).to include("優先度を入力してください")
       end
       it '説明が空の時' do
         @technique.description = nil
         @technique.valid?
-        expect(@technique.errors.full_messages).to include("Description can't be blank")
+        expect(@technique.errors.full_messages).to include("技術の詳細を入力してください")
       end
       it '技術習得予定日が現在日より早い時' do
-        @technique.target_at = '2019/12/30'
+        @technique.target_at = '2020/02/30'
         @technique.valid?
-        expect(@technique.errors.full_messages).to include("Target at is invalid")
+        expect(@technique.errors.full_messages).to include("技術習得予定日は不正な値です")
       end
       it '技術習得締め日が技術習得予定日より早い時' do
-        @technique.target_at = '2020/12/31'
-        @technique.completed_at = '2020/12/30'
+        @technique.target_at = '2021/02/30'
+        @technique.completed_at = '2021/01/30'
         @technique.valid?
-        expect(@technique.errors.full_messages).to include("Completed at is invalid")
+        expect(@technique.errors.full_messages).to include("技術習得締め日は不正な値です")
       end
     end
   end
