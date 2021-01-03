@@ -2,5 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'techniques#index'
   resources :techniques
-  resources :users, only: :show
+  resources :users, only: [:show] do
+    resource :comments, only: [:create]
+  end
+  resources :comments, only: [:destroy,:update,:edit]
 end

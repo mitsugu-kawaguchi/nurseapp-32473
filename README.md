@@ -14,6 +14,7 @@
 
 - has_many :techniques
 - has_many :manuals
+- has_many :comments
 
 ## techniques テーブル
 
@@ -60,3 +61,14 @@
 ### Association
 
 - belongs_to :technique
+
+## comment テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| text             | text       | null: false                    |
+| user             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user

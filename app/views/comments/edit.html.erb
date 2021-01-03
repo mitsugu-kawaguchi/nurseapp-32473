@@ -1,0 +1,14 @@
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">コメント編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <%= form_with model: @comment,local: true do |f| %>
+          <%= f.text_area :text %>
+          <%= f.submit "編集する" %>
+          <p><%=link_to 'もどる', user_path, class:"back-btn" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
