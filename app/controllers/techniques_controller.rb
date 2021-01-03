@@ -2,6 +2,7 @@ class TechniquesController < ApplicationController
   def index
     @users = User.where("nursing_history <=3")
     @techniques = Technique.all.order('priority_id DESC')
+    @techniques = @search.result
   end
 
   def new
