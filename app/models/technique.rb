@@ -8,6 +8,7 @@ class Technique < ApplicationRecord
     validates :description
     validates :target_at
     validates :completed_at
+    validates :video
   end
   validate :start_finish_check
   validate :start_check

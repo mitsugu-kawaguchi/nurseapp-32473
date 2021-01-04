@@ -13,7 +13,7 @@
 ### Association
 
 - has_many :techniques
-- has_many :manuals
+- has_many :posts
 - has_many :comments
 
 ## techniques テーブル
@@ -25,50 +25,41 @@
 | description   | text       | null: false                      |
 | target_at     | datetime   | null: false                      |
 | completed_at  | datetime   | null: false                      |
-| completed     | boolean    | null: false                      |
+| completed     | boolean    |                                  |
+| video         |            | null: false                      |
 | user          | references | null: false, foreign_key: true   |
-
 ### Association
 
 - belongs_to  :user
-- has_one     :manual
-- has_many    :plans
 
-## manual テーブル
+## post テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| title               | string     | null: false                    |
-| priority_id         | integer    | null: false                    |
-| description         | text       | null: false                    |
-| technique           | references | null: false, foreign_key: true |
+| content             | string     | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :technique
-- has_one_attached :movies
-
-## plan テーブル
-
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| name             | string     | null: false                    |
-| care_time        | time       |                                |
-| technique        | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :technique
 
 ## comment テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| text             | text       | null: false                    |
+| content          | string     | null: false                    |
 | user             | references | null: false, foreign_key: true |
+| post             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :post
+
+## meeting テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| start_time       | datetime   | null: false                    |
+

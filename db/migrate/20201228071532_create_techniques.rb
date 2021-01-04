@@ -7,7 +7,7 @@ class CreateTechniques < ActiveRecord::Migration[6.0]
       t.datetime :target_at,           null: false
       t.datetime :completed_at,        null: false
       t.boolean  :completed
-      t.string   :video
+      t.string   :video,               null: false
       t.references :user,              null: false, foreign_key: true
 
       t.timestamps
