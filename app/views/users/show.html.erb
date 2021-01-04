@@ -1,15 +1,12 @@
 <div class="AccountPage">
   <div class="AccountPage__title">
-    <h1>マイページ</h1>
+    <h1>ユーザーページ</h1>
   </div><br>
-  <div class="Card__title">
-    <h2>カード情報</h2>
-  </div>
   <div class="Account__info">
     <h2>ユーザー情報</h2>
-    <%= @user.name %>
-    <%= @user.nursing_history %>
-    <%= @user.ward_id %>
+    <p>名前：<%= @user.name %></p>
+    <p>看護師歴：<%= @user.nursing_history %></p>
+    <p>病棟名：<%= @user.ward_id %></p>
   </div>
   <div class="Technique＿info">
     <h2>技術情報</h2>
