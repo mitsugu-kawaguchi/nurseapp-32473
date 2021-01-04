@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :techniques do
     get :search, on: :collection
   end
-  resources :users, only: [:show] do
-    resource :comments, only: [:create]
+  resources :users, only: [:show]
+  resources :posts, only: [:show,:create] do
+    resources :comments, only: [:create,:destroy,:update,:edit]
   end
-  resources :comments, only: [:destroy,:update,:edit]
 end

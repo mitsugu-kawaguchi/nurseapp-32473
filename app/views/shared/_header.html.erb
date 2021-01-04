@@ -2,7 +2,7 @@
   <div class='right-header'>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.name, "#", class: "user-name" %></li>
+        <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% end %>
     </ul>

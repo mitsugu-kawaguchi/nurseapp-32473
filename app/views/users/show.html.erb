@@ -15,22 +15,15 @@
     <h2>技術情報</h2>
     <%= render partial: 'techniques/technique', collection: @techniques %>
   </div><br>
-    <div class="comments-box">
-     <%= form_with model: [@user,@comment], local: true, method: :post do |f| %>
-        <%= f.text_field :text %>
-        <%= f.submit '送信' %>
-      <% end %>
-      <div class='comments'>
-        <% @comments.each do |comment| %>
-          <p><%= comment.text %><%= comment.user.name %></p>
-          <% if user_signed_in? && current_user.id == @comment.user_id %>
-            <%= link_to "編集する", edit_comment_path(comment.id), class: :comment__btn %>
-            <%= link_to "削除する", comment_path(comment.id), method: :delete, class: :comment__btn %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-   
+  <div class="Comment＿info">
+    <h2>質問・悩み</h2>
+    <%= render partial: 'posts/post', collection: @posts %>
+    <h2>質問テーマ</h2>
+    <%= form_for @post do |f| %>
+      <%= f.text_field :content %>
+      <%= f.submit '質問する' %>
+    <% end %>
+  </div>
    <%= link_to "ログアウト", destroy_user_session_path, method: :delete%><br>
    <%= link_to "戻る", root_path%>
 </div>

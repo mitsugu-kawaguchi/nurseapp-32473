@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
     @comment = Comment.new(comments_params)
+    @comment.user_id = current_user.id
     if @comment.save
-      redirect_to controller: :users, action: :show, id: @comment.user_id
+      redirect_back(fallback_location: root_path)
     else
-      @user = @comment.user
-      @comments = @user.comments
-      render "users/show"
+      @post = @comment.post
+      @comments = @post.comments
+      render "posts/show"
     end
   end
 
@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.destroy
-      redirect_to controller: :users, action: :show, id: @comment.user_id
+      redirect_back(fallback_location: root_path)
     else
-      render "users/show"
+      render "posts/show"
     end
   end
 
@@ -32,15 +32,15 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.user_id == current_user.id
       @comment.update(comments_params)
-      redirect_to controller: :users, action: :show, id: @comment.user_id
+      redirect_back(fallback_location: root_path)
     else
-      render "users/show"
+      render "posts/show"
     end
   end
 
   private
   def comments_params
-    params.require(:comment).permit(:text).merge(user_id: current_user.id)
+    params.require(:comment).permit(:content).merge(user_id: current_user.id, post_id: params[:post_id])
   end
 
 end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :techniques
   has_many :comments
+  has_many :posts, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ward
 
