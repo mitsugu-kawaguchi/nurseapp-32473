@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_02_044404) do
+ActiveRecord::Schema.define(version: 2021_01_04_085452) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content", null: false
@@ -22,8 +22,15 @@ ActiveRecord::Schema.define(version: 2021_01_02_044404) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "meetings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "start_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_01_02_044404) do
     t.datetime "target_at", null: false
     t.datetime "completed_at", null: false
     t.boolean "completed"
-    t.string "video"
+    t.string "video", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

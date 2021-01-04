@@ -3,6 +3,7 @@ class TechniquesController < ApplicationController
     @users = User.where("nursing_history <=3")
     @techniques = Technique.all.order('priority_id DESC')
     @techniques = @search.result
+    @meetings = Meeting.all
   end
 
   def new

@@ -35,28 +35,26 @@
           </li>
         <% end %>
       </ul>
+      <% if user_signed_in? && current_user.nursing_history >= 4 %>
+        <%= link_to new_technique_path do %>
+          <span class='technique-btn-text'>技術追加する</span>
+        <% end %>
+      <% end %>
     </div>
 
     <div class='plans'>
-      <h2 class='title-3'>本日の予定一覧</h2>
-      <ul class='plan-lists'>
-        <%# @plans.each do |plan| %>
-          <li class='list'>
-            <%= link_to '' do %>
-              <div class='plan-info'>
-                <h3 class='plan-name'>
-                  <%#= plan.name %>
-                </h3>
-              </div>
-            <% end %>
-          </li>
-        <%# end %>
-      </ul>
-    </div>
-    <% if user_signed_in? && current_user.nursing_history >= 4 %>
-      <%= link_to new_technique_path do %>
-        <span class='technique-btn-text'>技術追加する</span>
+      <h2 class='title-3'>予定一覧</h2>
+      <%= week_calendar events: @meetings do |date,meetings| %>
+        <%= date %>
+        <% meetings.each do |meeting| %>
+          <div>
+            <%= meeting.name %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+      <% if user_signed_in? && current_user.nursing_history >= 4 %>
+        <%= link_to '予定入力', new_meeting_path %>
+      <% end %>
+    </div>
   </div>
 </div>
