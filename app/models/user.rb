@@ -14,4 +14,8 @@ class User < ApplicationRecord
     validates :nursing_history
     validates :ward_id
   end
+
+  def posts
+    return Post.where(user_id: self.id)
+  end
 end

@@ -4,7 +4,7 @@
     <div class="form users-form">
       <div class="form-body">
         <%= form_with model: @comment,local: true do |f| %>
-          <%= f.text_area :text %>
+          <%= f.text_area :content %>
           <%= f.submit "編集する" %>
           <p><%=link_to 'もどる', user_path, class:"back-btn" %></p>
         <% end %>

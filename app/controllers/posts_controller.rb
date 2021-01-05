@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.includes(:user)
   end
 
   def create
@@ -17,6 +17,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content).merge(user_id: current_user.id)
   end
 end

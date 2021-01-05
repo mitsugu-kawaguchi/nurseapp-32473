@@ -14,11 +14,15 @@
   </div><br>
   <div class="Comment＿info">
     <h2>質問・悩み</h2>
-    <%= render partial: 'posts/post', collection: @posts %>
+    <% @user.posts.each do |post| %>
+      <p><%= link_to post.content, post_path(post.id), class: :card__title%></p>
+    <% end %>
     <h2>質問テーマ</h2>
-    <%= form_for @post do |f| %>
-      <%= f.text_field :content %>
-      <%= f.submit '質問する' %>
+    <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+      <%= form_for @post do |f| %>
+        <%= f.text_field :content %>
+        <%= f.submit '質問する' %>
+      <% end %>
     <% end %>
   </div>
    <%= link_to "ログアウト", destroy_user_session_path, method: :delete%><br>

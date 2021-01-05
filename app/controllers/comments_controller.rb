@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     @comment = Comment.new(comments_params)
     @comment.user_id = current_user.id
@@ -7,33 +8,6 @@ class CommentsController < ApplicationController
     else
       @post = @comment.post
       @comments = @post.comments
-      render "posts/show"
-    end
-  end
-
-  def destroy
-    @comment = Comment.find(params[:id])
-    if @comment.user_id == current_user.id
-      @comment.destroy
-      redirect_back(fallback_location: root_path)
-    else
-      render "posts/show"
-    end
-  end
-
-  def edit
-    @comment = Comment.find(params[:id])
-    unless @comment.user_id == current_user.id
-      redirect_to action: :show
-    end
-  end
-
-  def update
-    @comment = Comment.find(params[:id])
-    if @comment.user_id == current_user.id
-      @comment.update(comments_params)
-      redirect_back(fallback_location: root_path)
-    else
       render "posts/show"
     end
   end

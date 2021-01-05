@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :meetings, only: [:new,:create]
   resources :users, only: [:show]
   resources :posts, only: [:show,:create] do
-    resources :comments, only: [:create,:destroy,:update,:edit]
+    resources :comments, only: [:create]
   end
 end
