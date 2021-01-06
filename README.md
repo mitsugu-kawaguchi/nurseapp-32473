@@ -15,6 +15,7 @@
 - has_many :techniques
 - has_many :posts
 - has_many :comments
+- has_many :completes
 
 ## techniques テーブル
 
@@ -25,12 +26,12 @@
 | description   | text       | null: false                      |
 | target_at     | datetime   | null: false                      |
 | completed_at  | datetime   | null: false                      |
-| completed     | boolean    |                                  |
 | video         |            | null: false                      |
 | user          | references | null: false, foreign_key: true   |
 ### Association
 
 - belongs_to  :user
+- has_many    :completes
 
 ## post テーブル
 
@@ -63,3 +64,16 @@
 | name             | string     | null: false                    |
 | start_time       | datetime   | null: false                    |
 
+
+## complete テーブル
+
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| completed           | boolean    | null: false, default: false    |
+| user                | references | null: false, foreign_key: true |
+| technique           | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user, optional: true
+- belongs_to :technique, optional: true

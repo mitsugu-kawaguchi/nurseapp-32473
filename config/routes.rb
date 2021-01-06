@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'techniques#index'
   resources :techniques do
     get :search, on: :collection
+    resource :completes, only: [:create, :destroy]
   end
   resources :meetings, only: [:new,:create]
   resources :users, only: [:show]
