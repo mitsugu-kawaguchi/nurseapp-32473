@@ -1,6 +1,6 @@
 class Technique < ApplicationRecord
   belongs_to :user
-  has_many    :completes
+  has_many    :completes, dependent: :destroy
   mount_uploader :video, VideoUploader
 
   with_options presence: true do

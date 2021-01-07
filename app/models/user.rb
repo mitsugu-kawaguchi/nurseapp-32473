@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :techniques
-  has_many :comments
+  has_many :techniques, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :completes
+  has_many :completes, dependent: :destroy
   has_many :complete_techniques, through: :completes, source: :technique
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ward
