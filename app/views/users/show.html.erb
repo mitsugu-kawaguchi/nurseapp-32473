@@ -5,12 +5,23 @@
   <div class="Account__info">
     <h2>ユーザー情報</h2>
     <p>名前：<%= @user.name %></p>
-    <p>看護師歴：<%= @user.nursing_history %></p>
-    <p>病棟名：<%= @user.ward_id %></p>
+    <p>看護師歴：<%= @user.nursing_history %>年</p>
+    <p>病棟名：<%= @user.ward.name %></p>
   </div>
   <div class="Technique＿info">
     <h2>技術情報</h2>
-    <%= render partial: 'techniques/technique', collection: @techniques %>
+    <% @Techniques.each do |technique| %>
+      <%= link_to technique.title, technique_path(technique.id), class: :card__title%>
+      <% if technique.completed_by?(current_user) || technique.completes.present? %>
+        <p><span></span><%=link_to "完了", technique_completes_path(technique.id), method: :delete %></p>
+      <% else %>
+        <p><span></span><%=link_to "未完了", technique_completes_path(technique.id), method: :post %></p>
+      <% end %>
+    <% end %>
+    <% @complete_techniques.each do |technique| %>
+      <hr>
+      <p><span>経験済み技術 </span><%=link_to technique.title, technique_path(technique.id) %></p>
+    <% end %>
   </div><br>
   <div class="Comment＿info">
     <h2>質問・悩み</h2>

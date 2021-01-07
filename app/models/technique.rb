@@ -1,5 +1,6 @@
 class Technique < ApplicationRecord
   belongs_to :user
+  has_many    :completes
   mount_uploader :video, VideoUploader
 
   with_options presence: true do
@@ -22,4 +23,8 @@ class Technique < ApplicationRecord
   end
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :priority
+
+  def completed_by?(user)
+    completes.where(user_id: user.id).exists?
+  end
 end
