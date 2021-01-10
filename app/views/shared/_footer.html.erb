@@ -1,0 +1,12 @@
+<footer class= "top-page-footer">
+  <h2 class= "title-sub">＜指導者入力フォーム＞</h2>
+  <% if user_signed_in? && current_user.nursing_history >= 4 %>
+      <%= link_to new_technique_path do %>
+        <span class='btn-text'>技術を追加する</span>
+      <% end %>
+      <hr>
+      <%= link_to new_meeting_path do %>
+        <span class='btn-text'>予定を追加する</span>
+      <% end %>
+  <% end %>
+</footer>

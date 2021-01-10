@@ -24,8 +24,8 @@
 | title         | string     | null: false                      |
 | priority_id   | integer    | null: false                      |
 | description   | text       | null: false                      |
-| target_at     | datetime   | null: false                      |
-| completed_at  | datetime   | null: false                      |
+| target_on     | date       | null: false                      |
+| completed_on  | date       | null: false                      |
 | video         |            | null: false                      |
 | user          | references | null: false, foreign_key: true   |
 ### Association

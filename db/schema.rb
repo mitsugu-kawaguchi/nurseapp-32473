@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_064742) do
     t.string "title", null: false
     t.integer "priority_id", null: false
     t.text "description", null: false
-    t.datetime "target_at", null: false
-    t.datetime "completed_at", null: false
+    t.date "target_on", null: false
+    t.date "completed_on", null: false
     t.string "video", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

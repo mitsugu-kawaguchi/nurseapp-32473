@@ -1,53 +1,34 @@
-<div class="techniques-contents">
-
-  <div class="techniques-sellect-main">
-      <h2 class="techniques-sellect-title">技術の情報を入力</h2>
+<%= render "shared/header" %>
+<div class="main">
+  <h2 class="title-sub">＜技術の情報を入力＞</h2>
+  <div class="techniques-main">
     <%= form_with model: @technique,local: true do |f| %>
-
       <%= render 'shared/error_messages', model: f.object %>
-
-      <%# 技術名と技術説明 %>
       <div class="new-techniques">
-        <div class="weight-bold-text">
-          技術名
-          <span class="indispensable">必須</span>
-        </div>
-        <%= f.text_area :title, class:"techniques-text", id:"technique-name", placeholder:"技術名（必須 40文字まで)", maxlength:"40" %>
+        <h3 class="title-usa">看護技術</h3>
+        <%= f.text_area :title, class:"techniques-text", placeholder:"技術名（必須 40文字まで)", maxlength:"40" %>
         <div class="techniques-explain">
-          <div class="weight-bold-text">
-            技術の説明
-            <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_area :description, class:"techniques-text", id:"technique-info", placeholder:"技術の説明" ,rows:"7" ,maxlength:"1000" %>
+          <h3 class="title-usa">技術の説明</h3>
+          <%= f.text_area :description, class:"techniques-text", placeholder:"技術の説明" ,rows:"7" ,maxlength:"1000" %>
         </div>
-        <div class="field">
-          <%= f.label :video %><br>
+        <h3 class="manual">マニュアル
           <%= f.file_field :video, :accept => 'video/*' %>
-        </div>
-      </div>
-
-      <%# 技術の詳細 %>
-      <div class="techniques-detail">
-        <div class="weight-bold-text">技術の詳細</div>
-        <div class="form">
-          <div class="weight-bold-text">
-            優先度
-            <span class="indispensable">必須</span>
-          </div>
+        </h3>
+        <h3 class="title-usa">優先度
           <%= f.collection_select(:priority_id, Priority.all, :id, :name, {}, {class:"select-box", id:"technique-priority"}) %>
-          <label class="control-label" for="">技術習得予定日</label>
-            <%= f.date_select :target_at, {}, class: 'form-control' %>
-          <label class="control-label" for="">技術習得締め日</label>
-            <%= f.date_select :completed_at, {}, class: 'form-control' %>
-        </div>
-      </div>
-
-      <div class="sell-btn-contents">
+        </h3>
+        <h3 class="title-usa" for="">技術習得予定日
+          <%= f.date_select :target_on, {}, class: 'form-control' %><br>
+        </h3>
+        <h3 class="title-usa" for="">技術習得締め日
+          <%= f.date_select :completed_on, {}, class: 'form-control' %>
+        </h3>
         <% if user_signed_in? && current_user.nursing_history >= 4 %>
           <%= f.submit "追加する" ,class:"technique-btn" %>
-          <%=link_to 'もどる', root_path, class:"back-btn" %>
+          <%=link_to 'トップへもどる', root_path, class:"back-btn" %>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
+<%= render "shared/footer" %>

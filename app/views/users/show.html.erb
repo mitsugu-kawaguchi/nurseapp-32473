@@ -1,41 +1,56 @@
-<div class="AccountPage">
-  <div class="AccountPage__title">
-    <h1>ユーザーページ</h1>
-  </div><br>
-  <div class="Account__info">
-    <h2>ユーザー情報</h2>
-    <p>名前：<%= @user.name %></p>
-    <p>看護師歴：<%= @user.nursing_history %>年</p>
-    <p>病棟名：<%= @user.ward.name %></p>
-  </div>
-  <div class="Technique＿info">
-    <h2>技術情報</h2>
-    <% @Techniques.each do |technique| %>
-      <%= link_to technique.title, technique_path(technique.id), class: :card__title%>
-      <% if technique.completed_by?(current_user) || technique.completes.present? %>
-        <p><span></span><%=link_to "完了", technique_completes_path(technique.id), method: :delete %></p>
-      <% else %>
-        <p><span></span><%=link_to "未完了", technique_completes_path(technique.id), method: :post %></p>
-      <% end %>
-    <% end %>
-    <% @complete_techniques.each do |technique| %>
+<%= render "shared/header" %>
+<div class="main">
+  <div class="technique-user">
+    <div class="Account__info">
+      <h2 class='title-user'>＜新人情報＞</h2>
+      <div class="user-example">
+        <p>名前：<%= @user.name %></p>
+        <p>看護師歴：<%= @user.nursing_history %>年</p>
+        <p>病棟名：<%= @user.ward.name %></p>
+      </div>
+    </div>
+    <div class="Technique＿info">
+      <h2 class='title-user'>＜技術進捗＞</h2>
+      <div class="user-example">
+        <% @Techniques.each do |technique| %>
+          <%= link_to technique.title, technique_path(technique.id), class: :card__title%>
+          <% if technique.completed_by?(current_user) || technique.completes.present? %>
+            <%=link_to "完了", technique_completes_path(technique.id), method: :delete %>
+          <% else %>
+            <%=link_to "未完了", technique_completes_path(technique.id), method: :post %>
+          <% end %>
+        <% end %>
+      </div>
       <hr>
-      <p><span>経験済み技術 </span><%=link_to technique.title, technique_path(technique.id) %></p>
-    <% end %>
-  </div><br>
-  <div class="Comment＿info">
-    <h2>質問・悩み</h2>
-    <% @user.posts.each do |post| %>
-      <p><%= link_to post.content, post_path(post.id), class: :card__title%></p>
-    <% end %>
-    <h2>質問テーマ</h2>
-    <% if user_signed_in? && current_user.id.to_s == params[:id] %>
-      <%= form_for @post do |f| %>
-        <%= f.text_field :content %>
-        <%= f.submit '質問する' %>
-      <% end %>
-    <% end %>
+      <h2 class='title-user'>＜経験済み技術＞</h2>
+      <div class="user-example">
+        <% @complete_techniques.each do |technique| %>
+          <p><%=link_to technique.title, technique_path(technique.id) %></p>
+        <% end %>
+      </div>
+    </div><br>
   </div>
-   <%= link_to "ログアウト", destroy_user_session_path, method: :delete%><br>
-   <%= link_to "戻る", root_path%>
+  <div class="Comment＿info">
+    <div class="question">
+      <h2 class='title-user'>＜質問・悩み＞</h2>
+      <div class="user-example">
+        <% @user.posts.each do |post| %>
+          <p><%= link_to post.content, post_path(post.id), class: :card__title%></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="question-form">
+      <h2 class='title-user'>＜質問テーマ記入フォーム＞</h2>
+      <% if user_signed_in? && current_user.id.to_s == params[:id] %>
+        <div class="user-example">
+          <%= form_for @post do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit '質問する' %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= link_to "トップへ戻る", root_path%>
+    </div>
+  </div>
 </div>
+<%= render "shared/footer" %>

@@ -1,10 +1,9 @@
 <%= render "shared/header" %>
-
-<div class='technique-show'>
+<div class='main'>
   <div class='technique-box'>
-    <h2 class='technique-name'>
+    <h2 class='technique-name1'>
       <%= @technique.title %>
-    </h2>
+    </h2><hr>
     <div class='technique-image-content'>
       <%= link_to @technique.video_url.to_s do %>
         <%= image_tag(@technique.video_url(:screenshot).to_s, id: "video", :alt => "screenshot") %>
@@ -13,10 +12,16 @@
     <div class="technique-explain-box">
       <span><%= @technique.description %></span>
     </div>
-
+    <div class="technique-example">
+      <span>優先度：<%= @technique.priority.name %></span><br>
+      <span>技術習得予定日：<%= @technique.target_on %></span>
+      <span> 〜 <%= @technique.completed_on %></span>
+    </div><br>
     <% if user_signed_in? && current_user.nursing_history >= 4 %>
       <%= link_to '編集', edit_technique_path(@technique.id), method: :get, class: "technique-red-btn" %>
       <%= link_to '削除', technique_path(@technique.id), method: :delete, class:'technique-destroy' %>
     <% end %>
+    <%= link_to "トップへ戻る", root_path%>
   </div>
 </div>
+<%= render "shared/footer" %>

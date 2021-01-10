@@ -1,15 +1,20 @@
 <header class='top-page-header'>
-  <div class='right-header'>
-    <ul class='lists-right'>
+  <h1 class='title-main'>新人教育チェックリスト</h1>
+  <div class='left_header'>
+    <div class="search-form">
+      <%= search_form_for @search do |f| %>
+        <%= f.search_field :title_cont, placeholder:'キーワードから探す'%>
+        <%= f.collection_select(:priority_id_eq, Priority.all, :id, :name, {}, {class:"select-box"})%>優先度
+        <%= f.submit :'検索', class:"search-button" %>
+      <% end %>
+    </div>
+  </div>
+  <div class='nav'>
+    <ul class='list'>
       <% if user_signed_in? %>
         <li><%= link_to current_user.name, user_path(current_user), class: "user-name" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% end %>
     </ul>
-    <%= search_form_for @search do |f| %>
-      <%= f.search_field :title_cont %>
-      <%= f.collection_select(:priority_id_eq, Priority.all, :id, :name, {}, {class:"select-box"})%>
-      <%= f.submit :'検索' %>
-    <% end %>
   </div>
 </header>

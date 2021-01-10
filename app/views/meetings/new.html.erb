@@ -1,5 +1,31 @@
-<h1>新規予定</h1>
+<%= render "shared/header" %>
 
-<%= render 'form', meeting: @meeting %>
+<div class="main">
+  <h2 class="title-sub">＜新規予定＞</h2>
+  <%= form_with(model: @meeting, local: true) do |form| %>
+    <% if @meeting.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+        <ul>
+          <% @meeting.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="new-plan">
+      <h3 class="title-usa">予定
+        <%= form.text_field :name %>
+      </h3>
 
-<%= link_to 'Back', meetings_path %>
+      <h3 class="title-usa">予定時刻
+        <%= form.datetime_select :start_time %>
+      </h3>
+      <div class="actions">
+        <%= form.submit "予定を追加する"%>
+        <%= link_to 'トップへ戻る', root_path %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= render "shared/footer" %>

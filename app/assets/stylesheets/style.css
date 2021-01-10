@@ -1,0 +1,207 @@
+/* リセットCSS */
+body {
+  font-size: 16px;
+  color: #333;
+  margin: 0 auto;
+}
+h1,h2,h3,h4,h5,h6,p {
+  padding: 10px 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ヘッダー */
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  height: 160px;
+  display: flex;
+  background-color: lightblue;
+  flex-direction: row;
+  border-bottom: 3px solid black;
+}
+.title-main {
+  width: 70vw;
+  padding: 2vh;
+  margin-right: 10vw;
+}
+.left_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-form {
+  font-size: 16px;
+  height:  0vh;
+  width: 20vw;
+  display: flex;
+  margin-bottom: 4px;
+}
+.search-button {
+  width: 5vh;
+  cursor: pointer;
+  background-color: lightgray;
+  padding: 1px;
+  border: 1px solid;
+}
+.nav{
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  padding: 23px 5px;
+}
+.list {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+.user-nickname {
+  text-decoration: none;
+  margin-right: 5vw;
+  color: #333333;
+  font-weight: bold;
+}
+.logout {
+  text-decoration: none;
+  color: #333333;
+}
+
+/* トップページ */
+.main {
+  height: 100vh;
+  width: 100vw;
+}
+
+.plans {
+  height: 300px;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.category {
+  height: calc(100vh - 300px);
+  display: flex;
+}
+
+.rookies {
+  width: 50vw;
+  background-color: white;
+
+}
+
+.techniques {
+  width: 50vw;
+  background-color: white;
+  border-left: 1px solid black;
+
+}
+
+.calendar-heading {
+  margin: 20px;
+}
+
+.simple-calendar {
+  padding: 20px;
+}
+
+.title-sub {
+  margin-left: 40px;
+  padding: 20px;
+}
+
+/* 技術追加ページ *//* 予定追加ページ *//* 技術編集ページ */
+.new-techniques {
+  margin: 40px 80px;
+}
+.new-plan {
+  padding: 40px 70px;
+}
+.technique-box {
+  text-align: center;
+}
+.technique-name1 {
+  font-size: 35px;
+}
+.technique-image-content {
+  padding-top: 20px;
+}
+.technique-explain-box {
+  font-size: 20px;
+  border: 1px solid #333333;
+  height: 200px;
+  width: 900px;
+  overflow-y: scroll;
+  margin: 50px auto;
+  text-align: left;
+	display: inline-block;
+}
+.technique-example {
+  font-size: 20px;
+}
+
+/* ユーザーページ */
+.technique-user {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 350px);
+}
+.Comment＿info {
+  height: 350px;
+  text-align: center;
+  border: 1px solid black;
+}
+.Account__info {
+  width: 30vw;
+  text-align: center;
+}
+.Technique＿info {
+  width: 70vw;
+  border-left: 1px solid black;
+  text-align: center;
+}
+.question-form {
+  text-align: center;
+}
+.user-example {
+  font-size: 20px;
+}
+.user-example1 {
+  font-size: 20px;
+  border: 1px solid #333333;
+  margin: 50px auto;
+}
+.comment-box {
+  text-align: center;
+}
+.comments-box {
+
+}
+.comments {
+  font-size: 20px;
+  overflow-y: scroll;
+  border: 1px solid #333333;
+  height: 300px;
+  width: 900px;
+  margin: 30px auto;
+  text-align: left;
+	display: inline-block;
+}
+
+/* フッター */
+.top-page-footer{
+  height: 160px;
+  width: 100vw;
+  background-color: lightblue;
+  border: 3px solid black;
+}
+.btn-text {
+  margin-left: 30px;
+}

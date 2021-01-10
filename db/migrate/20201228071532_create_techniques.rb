@@ -4,8 +4,8 @@ class CreateTechniques < ActiveRecord::Migration[6.0]
       t.string   :title,               null: false
       t.integer  :priority_id,         null: false
       t.text     :description,         null: false
-      t.datetime :target_at,           null: false
-      t.datetime :completed_at,        null: false
+      t.date     :target_on,           null: false
+      t.date     :completed_on,        null: false
       t.string   :video,               null: false
       t.references :user,              null: false, foreign_key: true
 
