@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :completes, dependent: :destroy
   has_many :complete_techniques, through: :completes, source: :technique
+  has_many :meetings
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :ward
 

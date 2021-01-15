@@ -16,6 +16,7 @@
 - has_many :posts
 - has_many :comments
 - has_many :completes
+- has_many :meetings
 
 ## techniques テーブル
 
@@ -63,7 +64,11 @@
 | ---------------- | ---------- | ------------------------------ |
 | name             | string     | null: false                    |
 | start_time       | datetime   | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
+### Association
+
+- belongs_to :user
 
 ## complete テーブル
 
