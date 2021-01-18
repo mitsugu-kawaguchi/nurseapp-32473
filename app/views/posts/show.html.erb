@@ -5,7 +5,9 @@
     <div class="user-example1">
       <p>質問者：<%= @post.user.name %></p>
       <p>テーマ：<%= @post.content %></p>
-      <%= link_to '削除', post_path(@post.id), method: :delete, class:'post-destroy' %>
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <%= link_to '削除', post_path(@post.id), method: :delete, class:'post-destroy' %>
+      <% end %>
     </div>
     <div class="comments-box">
       <%= form_with model: [@post,@comment], local: true, method: :post do |f| %>
@@ -14,8 +16,10 @@
       <% end %>
       <div class='comments'>
         <% @comments.each do |comment| %>
-        <p><%= comment.content %><%= comment.user.name %></p>
-        <%= link_to '削除', comment_path(comment.id), method: :delete, class:'comment-destroy' %><hr>
+          <p><%= comment.content %><%= comment.user.name %></p>
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to '削除', comment_path(comment.id), method: :delete, class:'comment-destroy' %><hr>
+          <% end %>
         <% end %>
       </div>
     </div>

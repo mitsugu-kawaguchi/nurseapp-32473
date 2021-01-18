@@ -15,9 +15,9 @@
         <% @Techniques.each do |technique| %>
           <%= link_to technique.title, technique_path(technique.id), class: :card__title%>
           <% if technique.completed_by?(current_user) || technique.completes.present? %>
-            <%=link_to "完了", technique_completes_path(technique.id), method: :delete %>
+            <%=link_to "完了", technique_completes_path(technique.id), method: :delete %><br>
           <% else %>
-            <%=link_to "未完了", technique_completes_path(technique.id), method: :post %>
+            <%=link_to "未完了", technique_completes_path(technique.id), method: :post %><br>
           <% end %>
         <% end %>
       </div>
